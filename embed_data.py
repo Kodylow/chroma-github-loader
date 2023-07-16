@@ -2,12 +2,15 @@
 
 import os
 import argparse
-
+import time
 import chromadb
 from chromadb.config import Settings
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+# load env
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def get_or_create_collection(collection_name: str, persist_directory: str):
@@ -35,16 +38,20 @@ def get_or_create_collection(collection_name: str, persist_directory: str):
 
 
 def read_files_recursively(root_dir: str):
+    print(f"Reading files from {root_dir}")
     documents = []
     metadatas = []
     r_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,
                                                 chunk_overlap=200,
                                                 separators=[" ", "\n"])
+    print("Reading files recursively")
     for dirpath, dirnames, filenames in os.walk(root_dir):
+        print(f"Reading directory {dirpath}")
         for filename in filenames:
             filepath = os.path.join(dirpath, filename)
             try:
                 with open(filepath, 'r', encoding='utf-8') as file:
+                    print(f"Reading file {filepath}")
                     chunks = r_splitter.split_text(file.read())
                     documents.extend(chunks)
                     metadatas.extend([{
@@ -54,6 +61,8 @@ def read_files_recursively(root_dir: str):
             except UnicodeDecodeError:
                 print(
                     f"Skipped file {filepath} due to Unicode decoding error.")
+                
+    print(f"Read {len(documents)} documents")
     return documents, metadatas
 
 
@@ -66,7 +75,16 @@ def main(data_dir: str, collection_name: str, persist_directory: str):
     count = collection.count()
     print(f'Collection contains {count} documents')
     ids = [str(i) for i in range(count, count + len(documents))]
-    print(f'Adding {len(documents)} documents to collection')
+    # split documents into batches of 5k documents and add to collection with 1second delay
+    batch_size = 1000
+    for i in range(0, len(documents), batch_size):
+        print(f'Adding batch {i}')
+        batch_ids = ids[i:i+batch_size]
+        batch_docs = documents[i:i+batch_size]
+        batch_metas = metadatas[i:i+batch_size]
+        collection.add(ids=batch_ids, documents=batch_docs, metadatas=batch_metas)
+        time.sleep(1)
+
     collection.add(ids=ids, documents=documents, metadatas=metadatas)
 
     new_count = collection.count()
