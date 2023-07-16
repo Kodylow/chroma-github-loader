@@ -1,0 +1,35 @@
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 4.76837158203125e-06
+DEBUG:Chroma:time to run knn query: 0.0004687309265136719
+DEBUG:Chroma:time to pre process our knn query: 4.291534423828125e-06
+DEBUG:Chroma:time to run knn query: 0.00030350685119628906
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.00020837783813476562
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 3.5762786865234375e-06
+DEBUG:Chroma:time to run knn query: 0.0002346038818359375
+DEBUG:Chroma:time to pre process our knn query: 2.384185791015625e-06
+DEBUG:Chroma:time to run knn query: 0.00021195411682128906
+DEBUG:Chroma:time to pre process our knn query: 3.0994415283203125e-06
+DEBUG:Chroma:time to run knn query: 0.0002281665802001953
+DEBUG:Chroma:time to pre process our knn query: 2.384185791015625e-06
+DEBUG:Chroma:time to run knn query: 0.0002512931823730469
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.0003769397735595703
+DEBUG:Chroma:time to pre process our knn query: 3.0994415283203125e-06
+DEBUG:Chroma:time to run knn query: 0.0003285408020019531
+DEBUG:Chroma:time to pre process our knn query: 3.337860107421875e-06
+DEBUG:Chroma:time to run knn query: 0.0002951622009277344
+DEBUG:Chroma:time to pre process our knn query: 1.9073486328125e-06
+DEBUG:Chroma:time to run knn query: 0.0002548694610595703
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.00027441978454589844
+DEBUG:Chroma:time to pre process our knn query: 2.6226043701171875e-06
+DEBUG:Chroma:time to run knn query: 0.00024127960205078125
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
